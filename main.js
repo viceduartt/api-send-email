@@ -2,6 +2,7 @@ import express from "express";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 import cors from 'cors'
+import serverless from "serverless-http";
 
 dotenv.config()
 
@@ -14,7 +15,6 @@ app.use(cors({
 }));
 
 app.use(express.json());
-
 
 app.post("/sendEmail", async (req, res) => {
   const { emailContact, bodyMsg } = req.body;
@@ -47,5 +47,4 @@ app.post("/sendEmail", async (req, res) => {
   }
 });
 
-
-app.listen(process.env.PORT, () => console.log("server run"));
+export const handler = serverless(app);
