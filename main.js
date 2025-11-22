@@ -8,7 +8,7 @@ dotenv.config()
 const app = express();
 
 app.use(cors({
-  origin: process.env.CLIENT,
+  origin: "*",
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type"]
 }));
